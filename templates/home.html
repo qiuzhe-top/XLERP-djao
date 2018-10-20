@@ -73,7 +73,7 @@
                         <a href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="{{ activedynamic }}">
-                        <a href="{% url 'dynamic' %}">动态</a>
+                        <a href="{% url 'postdata' %}">动态</a>
                     </li>
                     <li class="{{ activeApp }}">
                         <a href="{% url 'App' %}">软件</a>
@@ -107,6 +107,11 @@
                     <li>
                         <a href="#">
                             <i class="icon-linkedin2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin" target="_blank">
+                           管理员
                         </a>
                     </li>
                 </ul>

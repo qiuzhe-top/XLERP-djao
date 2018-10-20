@@ -1,0 +1,10 @@
+{% extends "home.html" %} 
+{% load staticfiles %}
+
+{% block main %}
+<div class="fh5co-narrow-content">
+        <div class="row row-bottom-padded-md mipadded-md">
+            {{ data|safe }}
+        </div>
+    </div>
+{% endblock %}
