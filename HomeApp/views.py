@@ -9,7 +9,6 @@ def home(request):
 def postdata(request):
     context = {}
     post = dynamic.objects.all().values('id','title','imgurl','msg','OtherMsg','star_time')    #取出id和user列，并生成一个列表
-    print(post)
     context['post'] = post
     context['activedynamic'] = 'fh5co-active'
     return render(request,'dynamic.html',context)

@@ -151,7 +151,7 @@ CKEDITOR_CONFIGS = {
 			['TextColor','BGColor'], 
 			['Maximize','ShowBlocks','-','About', 'pbckcode'],
 		),
-        'width':'auto',
+        'width':'800px',
         #'startupMode':'source', #默认源代码方式打开
         'startupFocus':True,
         
