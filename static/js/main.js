@@ -1,8 +1,8 @@
+
+
 ;(function () {
 	
 	'use strict';
-
-
 
 	var isMobile = {
 		Android: function() {
