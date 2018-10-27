@@ -2,10 +2,13 @@
 {% load staticfiles %}
 
 {% block main %}
-<div class="fh5co-narrow-content">
-        <span class="ula">社团日志1</span>
-        <span class="ula">计算机硬件1</span>
-        <span class="ula">计算机软件</span>
+    <ul class="ula">
+    {% for i in TClist %}
+        <a href="/post/?id={{ i.id }}"><li>{{ i.title }}</li></a> 
+    {% endfor %}
+    </ul>
+    
+<div id="uptop" class="fh5co-narrow-content">
         {% for i in post %}
         <div class="row row-bottom-padded-md mipadded-md">
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
@@ -18,5 +21,9 @@
             </div>
         </div>
         {% endfor %}
-    </div>
+</div>
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript" src="{% static 'js/dynamic.js' %}"></script>
+
 {% endblock %}

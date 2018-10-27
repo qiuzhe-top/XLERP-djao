@@ -46,7 +46,6 @@
 
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
     <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
 
     <!-- FOR IE9 below -->
@@ -303,10 +302,13 @@
 
     <!-- Flexslider -->
     <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'jsdata/index_data.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'jsdata/index_data.js' %}"></script> -->
     <!-- MAIN JS -->
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    {% block myjs %}
 
+    {% endblock %}
+    
 </body>
 
 </html>

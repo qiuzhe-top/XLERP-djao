@@ -1212,5 +1212,17 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   width: 100%;
 }
 .ula{
+  /* height: 40px; */
+  margin-top: 50px;
+}
+.ula a{
+  color: black;
+}
+.ula li{
+  width: 100px;
+  height: 30px;
   font-size: 16px;
+  float: left;
+  margin-right: 80px;
+  cursor: pointer;
 }
