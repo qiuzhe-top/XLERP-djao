@@ -9,10 +9,12 @@
     </ul>
     
 <div id="uptop" class="fh5co-narrow-content">
-        {% for i in post %}
+        {% for i in book_list %}
         <div class="row row-bottom-padded-md mipadded-md">
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                <a href="/postList/?id={{ i.id }}" target="_blank">
                 <img class="img-responsive" src="/media/{{ i.imgurl }}" alt="/{{ i.imgurl }}图像丢失！">
+                </a>
             </div>
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                 <h2 class="fh5co-heading"><a href="/postList/?id={{ i.id }}" target="_blank">{{ i.title }}</a> </h2>
@@ -21,6 +23,37 @@
             </div>
         </div>
         {% endfor %}
+        <ul class="pagination" id="pager">
+            {#上一页按钮开始#}
+            {# 如果当前页有上一页#}
+            {% if book_list.has_previous %}
+                {#  当前页的上一页按钮正常使用#}
+                <li class="previous"><a href="{% url 'postdata' %}?id={{ CLASSID }}&page={{ book_list.previous_page_number }}">上一页</a></li>
+            {% else %}
+                {# 当前页的不存在上一页时,上一页的按钮不可用#}
+                <li class="previous disabled"><a href="#">上一页</a></li>
+            {% endif %}
+            {#上一页按钮结束#}
+            {# 页码开始#}
+            {% for num in paginator.page_range %}
+    
+                {% if num == currentPage %}
+                    <li class="item active"><a href="{% url 'postdata' %}?id={{ CLASSID }}&page={{ num }}">{{ num }}</a></li>
+                {% else %}
+                    <li class="item"><a href="{% url 'postdata' %}?id={{ CLASSID }}&page={{ num }}">{{ num }}</a></li>
+    
+                {% endif %}
+            {% endfor %}
+  
+            {#页码结束#}
+            {# 下一页按钮开始#}
+            {% if book_list.has_next %}
+                <li class="next"><a href="{% url 'postdata' %}?id={{ CLASSID }}&page={{ book_list.next_page_number }}">下一页</a></li>
+            {% else %}
+                <li class="next disabled"><a href="#">下一页</a></li>
+            {% endif %}
+            {# 下一页按钮结束#}
+        </ul>
 </div>
 {% endblock %}
 {% block myjs %}

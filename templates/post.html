@@ -3,21 +3,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Post</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>{{ data.title }}</title>
     <style type="text/css">　　
         p {margin-left: 0px}
         body{
             padding: 20px;
         }
         .mipadded-md{
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
+        .mipadded-md h1{
+            text-align: center;
+        }
         .mipadded-md img{
-            width: 700px;
+            width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -27,7 +31,11 @@
     {% block main %}
     <div class="fh5co-narrow-content">
         <div class="row row-bottom-padded-md mipadded-md">
-            {{ data|safe }}
+            <h1>{{ data.title }}</h1>
+            <span>{{ data.star_time }}</span>
+            <span>{{ data.TitleClassificationID }}</span>
+            <hr />
+            {{ data.post|safe }}
         </div>
     </div>
     {% endblock %}

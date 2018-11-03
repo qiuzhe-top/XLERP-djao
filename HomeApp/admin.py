@@ -13,7 +13,8 @@ class APPLISTeleAdmin(admin.ModelAdmin):
 
 @admin.register(dynamic)
 class dynamicTeleAdmin(admin.ModelAdmin):
-    list_display = ('id','title','msg')
+    list_display = ('id','TitleClassificationID','title','msg')
+    search_fields =('id', 'title', 'msg') #搜索字段
 
     
 @admin.register(TitleClassification)
