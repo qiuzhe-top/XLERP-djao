@@ -5,7 +5,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class APPLIST(models.Model): 
     title = models.CharField(max_length=10,unique=True,verbose_name=u'标题')
-    imgurl = models.ImageField(upload_to='images/app',verbose_name=u'图片地址')
+    imgurl = models.ImageField(upload_to='static/images/app',verbose_name=u'图片地址')
     msg = models.CharField(max_length=300, verbose_name=u'简介') 
     PANdomurl = models.CharField(max_length=300, verbose_name=u'网盘地址') 
     WANdomurl = models.CharField(max_length=300, verbose_name=u'其它地址') 
@@ -21,7 +21,7 @@ class APPLIST(models.Model):
     
 class dynamic(models.Model): 
     title = models.CharField(max_length=30,unique=True,verbose_name=u'标题')
-    imgurl = models.ImageField(upload_to='images/post',verbose_name=u'图片地址')
+    imgurl = models.ImageField(upload_to='static/images/post',verbose_name=u'图片地址')
     msg = models.CharField(max_length=300, verbose_name=u'文章信息') 
     post = RichTextUploadingField(verbose_name=u'具体内容') 
     TitleClassificationID = models.ForeignKey('TitleClassification', on_delete=models.CASCADE,verbose_name=u'文章类型')
