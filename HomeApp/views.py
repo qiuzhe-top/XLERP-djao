@@ -3,8 +3,8 @@ from . import models
 from django.http import HttpResponseRedirect,JsonResponse
 import json
 import os
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from UserApp.models import Userpicture
 
 # Create your views here.
 # 访问主页
@@ -21,11 +21,10 @@ def postdata(request):
     if request.method == 'GET':
         TClist = models.TitleClassification.objects.all()#获取所有文章类型
         IDdata = request.GET.get('id')
-        print(IDdata)
         if IDdata == None:
+            #######   需要修改的点   ##############
             IDdata = 1
-
-        post = models.dynamic.objects.filter(TitleClassificationID=IDdata).values('id','title','imgurl','msg','OtherMsg','star_time').order_by('id')
+        post = models.dynamic.objects.filter(Classid=IDdata).values('id','title','imgurl','msg','OtherMsg','star_time').order_by('id')
         # context['post'] = post
         contact_list = post #models.dynamic.objects.get_queryset().order_by('id')#.values('id','title')
         # print(contact_list)
@@ -54,10 +53,23 @@ def postList(request):
     id = request.GET.get('id')
     context['data'] =  models.dynamic.objects.get(pk = id)
     return render(request,'post.html',context)
-    
+#软件收藏 
 def App(request):
     context = {}
     context['applist'] = models.APPLIST.objects.all()
-    print(context['applist'])
     context['activeApp'] = 'fh5co-active'
     return render(request,'App.html',context)  
+#物品管理
+def warehouse(request):
+    context = {}
+    context['warehouse'] = models.warehouse.objects.all()
+    # print(context['warehouse'])
+    context['activehome'] = 'fh5co-active'
+    return render(request,'warehouse.html',context)
+#成员签名
+def User_picture(request):
+    context = {}
+    context['User_picture'] = Userpicture.objects.all()
+    # print(context['User_picture'])
+    context['activehome'] = 'fh5co-active'
+    return render(request,'User_picture.html',context)

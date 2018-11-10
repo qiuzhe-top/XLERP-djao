@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import APPLIST,dynamic,TitleClassification
+from .models import *
 
 @admin.register(APPLIST)
 class APPLISTeleAdmin(admin.ModelAdmin):
@@ -13,10 +13,14 @@ class APPLISTeleAdmin(admin.ModelAdmin):
 
 @admin.register(dynamic)
 class dynamicTeleAdmin(admin.ModelAdmin):
-    list_display = ('id','TitleClassificationID','title','msg')
+    list_display = ('id','Classid','title','msg')
     search_fields =('id', 'title', 'msg') #搜索字段
 
     
 @admin.register(TitleClassification)
 class TitleClassificationTeleAdmin(admin.ModelAdmin):
     list_display = ('id','title')
+
+@admin.register(warehouse)
+class warehouseAdmin(admin.ModelAdmin):
+    list_display = ('id','title','numbers')

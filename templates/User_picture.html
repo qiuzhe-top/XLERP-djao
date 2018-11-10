@@ -1,0 +1,84 @@
+{% extends "home.html" %} 
+{% load staticfiles %} 
+{% block Mycss %}
+<link rel="stylesheet" href="http://www.jq22.com/demo/jQueryHTML5Card20160408/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/material-cards.css' %}">
+
+{% endblock %} 
+{% block main %}
+<div class="fh5co-narrow-content">
+    <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">成员</h2>
+    <div class="row row-bottom-padded-md">
+        <div class="row">
+
+            <div class="htmleaf-container">
+                <br>
+                <section class="container">
+                    <div class="row active-with-click">
+                        {% for i in User_picture %}
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <article class="material-card {{ i.LoveColor }}">
+                                <h2>
+                                    <span>{{ i.name }}</span>
+                                    <strong>
+                                        <!-- <i class="fa fa-fw fa-star"></i> -->
+                                        <i class="icon-heart">
+                                            <!-- <span class="glyphicon glyphicon-star-empty"></span> -->
+                                        </i>
+                                        {{ i.msg }}
+                                    </strong>
+                                </h2>
+                                <div class="mc-content">
+                                    <div class="img-container">
+                                        <img class="img-responsive" src="/{{ i.imgurl }}" alt="图片丢失：{{ i.imgurl }}">
+                                    </div>
+                                    <div class="mc-description">
+                                            {{ i.msg }}
+                                    </div>
+                                </div>
+                                <a class="mc-btn-action">
+                                    <!-- <i class="fa fa-bars"></i> -->
+                                    <i class="icon-plus"></i>
+
+                                </a>
+                                <div class="mc-footer">
+                                    <h4>
+                                        @
+                                    </h4>
+                                    <a class="icon-data"></a>
+                                    <a class="icon-data"></a>
+                                    <a class="icon-data"></a>
+                                    <a class="icon-data"></a>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}                        
+                    </div>
+                </section>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %} 
+{% block myjs %}
+<script type="text/javascript" src="{% static 'js/jquery.material-cards.min.js' %}"></script>
+<script>
+    $(function () {
+        $('.material-card').materialCard({
+            icon_close: 'fa-chevron-left',
+            icon_open: 'fa-thumbs-o-up',
+            icon_spin: 'fa-spin-fast',
+            card_activator: 'click'
+        });
+        //        $('.active-with-click .material-card').materialCard();
+        window.setTimeout(function () {
+            $('.material-card:eq(1)').materialCard('open');
+        }, 2000);
+        $('.material-card').on('shown.material-card show.material-card hide.material-card hidden.material-card', function (event) {
+            console.log(event.type, event.namespace, $(this));
+        });
+    });
+</script> 
+{% endblock %}
