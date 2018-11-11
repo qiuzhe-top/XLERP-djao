@@ -283,6 +283,9 @@ figure figcaption {
   padding: 4em 0;
   clear: both;
 }
+#fh5co-main .fh5co-narrow-content ul{
+float: right;
+}
 @media screen and (max-width: 768px) {
   #fh5co-main .fh5co-narrow-content {
     width: 100%;
@@ -729,6 +732,9 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   text-align: left;
   width: 70%;
 }
+.fh5co-text a{
+   color: rgba(0, 0, 0, 0.8);
+}
 @media screen and (max-width: 768px) {
   .fh5co-counter .fh5co-text {
     width: 100%;
@@ -845,7 +851,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   font-weight: 500;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.8);
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: .2em;
   text-transform: uppercase;
 }
@@ -1213,6 +1219,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 .ula{
   /* height: 40px; */
+  list-style-type:none;
   margin-top: 50px;
 }
 .ula a{
@@ -1221,8 +1228,18 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .ula li{
   width: 100px;
   height: 30px;
-  font-size: 16px;
+  font-size: 14px;
   float: left;
   margin-right: 80px;
   cursor: pointer;
+}
+.thumbnail img{
+  width: 100%;
+}
+.waremsg{
+  height: 60px;
+  overflow: auto;
+}
+.mc-footer{
+  text-align: center;
 }
