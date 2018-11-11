@@ -10,7 +10,6 @@
     <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">成员</h2>
     <div class="row row-bottom-padded-md">
         <div class="row">
-
             <div class="htmleaf-container">
                 <br>
                 <section class="container">
@@ -19,13 +18,14 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <article class="material-card {{ i.LoveColor }}">
                                 <h2>
-                                    <span>{{ i.name }}</span>
+                                    <span style="display:inline;">姓名:{{ i.UserID }}</span>
+                                    <span style="display:inline;">评分:{{ i.UserID.experience }}</span>
                                     <strong>
                                         <!-- <i class="fa fa-fw fa-star"></i> -->
                                         <i class="icon-heart">
                                             <!-- <span class="glyphicon glyphicon-star-empty"></span> -->
                                         </i>
-                                        {{ i.msg }}
+                                        {{ i.motto }}
                                     </strong>
                                 </h2>
                                 <div class="mc-content">
@@ -43,7 +43,7 @@
                                 </a>
                                 <div class="mc-footer">
                                     <h4>
-                                        @
+                                        联系方式
                                     </h4>
                                     <a class="icon-data"></a>
                                     <a class="icon-data"></a>

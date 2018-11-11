@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect,JsonResponse
 import json
 import os
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from UserApp.models import Userpicture
+from UserApp.models import UsPicture
 
 # Create your views here.
 # 访问主页
@@ -69,7 +69,7 @@ def warehouse(request):
 #成员签名
 def User_picture(request):
     context = {}
-    context['User_picture'] = Userpicture.objects.all()
+    context['User_picture'] = UsPicture.objects.all()
     # print(context['User_picture'])
     context['activehome'] = 'fh5co-active'
     return render(request,'User_picture.html',context)
