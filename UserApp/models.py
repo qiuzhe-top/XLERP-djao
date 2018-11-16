@@ -30,7 +30,7 @@ class UsPicture(models.Model):
         (u'Indigo', u'靛蓝'),
         (u'Blue', u'蓝色'),
     )
-    name = models.CharField(max_length=30, verbose_name=u'姓名(默认无效)') 
+    name = models.CharField(max_length=30, null=True, blank=True, verbose_name=u'姓名(默认不填)') 
     imgurl = models.ImageField(upload_to='static/images/UserPicture',verbose_name=u'图片地址')
     motto = models.CharField(max_length=100, verbose_name=u'格言') 
     msg = models.CharField(max_length=300, verbose_name=u'简介') 

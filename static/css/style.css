@@ -1243,3 +1243,37 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .mc-footer{
   text-align: center;
 }
+
+/* 博客导航 */
+.navbar-form{
+  margin: 0px;
+}
+.xform-control{
+  height: 36px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  margin-top: 10px;
+}
+.mybtn-default{
+  margin-top: 10px;
+  background-color: #e2e2e200;
+  font-size: 14px;
+  border: 0px ;
+  border-radius: none;
+}
+.navbar-form{
+  padding: 0px;
+}
+.mynavbar-default{
+  background-color: none;
+  border-left-color: none;
+  border-right-color: none;
+  border-bottom-color: #e7e7e7;
+  border-radius: 0px; 
+}
+.myimg-responsive{
+  max-height: 250px;
+}
+.myfh5co-heading{
+  margin-bottom:10px;
+}

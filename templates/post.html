@@ -17,8 +17,15 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .mipadded-md h1{
+        .padd-1{
+            display: block;
+            font-size: 2em;
             text-align: center;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: 400px;
         }
         .mipadded-md img{
             width: 100%;
@@ -31,8 +38,9 @@
     {% block main %}
     <div class="fh5co-narrow-content">
         <div class="row row-bottom-padded-md mipadded-md">
-            <h1>{{ data.title }}</h1>
-            <span>{{ data.star_time }}</span>
+            <span class="padd-1">{{ data.title }}</span>
+            <span>日期:{{ data.star_time|date }} </span>
+            <span> 作者:{{ data.userID }}</span>
             <span>{{ data.TitleClassificationID }}</span>
             <hr />
             {{ data.post|safe }}

@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-
+from UserApp.models import User_Information
 # Create your models here.
 
 class APPLIST(models.Model): 
@@ -21,8 +21,8 @@ class APPLIST(models.Model):
     
 class dynamic(models.Model): 
     title = models.CharField(max_length=30,unique=True,verbose_name=u'标题')
-    imgurl = models.ImageField(upload_to='static/images/post',verbose_name=u'图片地址')
-    msg = models.CharField(max_length=300, verbose_name=u'文章信息') 
+    imgurl = models.ImageField(upload_to='static/images/post',null=True, blank=True, verbose_name=u'图片地址')
+    userID = models.ForeignKey(User_Information,on_delete=models.CASCADE,verbose_name=u'作者') 
     post = RichTextUploadingField(verbose_name=u'具体内容') 
     Classid = models.ForeignKey('TitleClassification', on_delete=models.CASCADE,verbose_name=u'文章类型')
     OtherMsg = models.CharField(max_length=300, verbose_name=u'简介') 
@@ -34,7 +34,7 @@ class dynamic(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = "动态"
+        verbose_name_plural = "文章"
         
 class TitleClassification(models.Model):
     title = models.CharField(max_length=30,unique=True,verbose_name=u'标题')

@@ -23,8 +23,9 @@ def postdata(request):
         IDdata = request.GET.get('id')
         if IDdata == None:
             #######   需要修改的点   ##############
-            IDdata = 1
-        post = models.dynamic.objects.filter(Classid=IDdata).values('id','title','imgurl','msg','OtherMsg','star_time').order_by('id')
+            post = models.dynamic.objects.all().order_by('id')[0:10].values('id','title','imgurl','userID','OtherMsg','star_time')
+        else:
+            post = models.dynamic.objects.filter(Classid=IDdata).values('id','title','imgurl','userID','OtherMsg','star_time').order_by('id')
         # context['post'] = post
         contact_list = post #models.dynamic.objects.get_queryset().order_by('id')#.values('id','title')
         # print(contact_list)

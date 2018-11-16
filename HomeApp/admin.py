@@ -9,13 +9,16 @@ class APPLISTeleAdmin(admin.ModelAdmin):
     #筛选器
     list_filter =('isDelete', 'title', 'msg', 'PANdomurl') #过滤器
     search_fields =('id', 'title', 'msg') #搜索字段
-    date_hierarchy = 'star_time'    # 详细时间分层筛选　
+    date_hierarchy = ('star_time')    # 详细时间分层筛选　
 
 @admin.register(dynamic)
 class dynamicTeleAdmin(admin.ModelAdmin):
-    list_display = ('id','Classid','title','msg')
-    search_fields =('id', 'title', 'msg') #搜索字段
+    list_display = ('id','Classid','title','userID')
+    search_fields =('id', 'title', 'userID') #搜索字段
 
+    list_filter =('Classid', 'isDelete') #过滤器
+    search_fields =('id', 'title', 'userID') #搜索字段
+    date_hierarchy = ('star_time')   # 详细时间分层筛选　
     
 @admin.register(TitleClassification)
 class TitleClassificationTeleAdmin(admin.ModelAdmin):
