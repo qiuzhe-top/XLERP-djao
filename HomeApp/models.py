@@ -51,7 +51,7 @@ class TitleClassification(models.Model):
 class warehouse(models.Model):
     title = models.CharField(max_length=100,unique=True,verbose_name="名称")
     numbers = models.IntegerField(null=True, blank=True,verbose_name=u'数量')
-    imgurl = models.ImageField(upload_to='static/images/PhotoWall',verbose_name=u'图片地址')
+    imgurl = models.ImageField(upload_to='static_collected/images/PhotoWall',verbose_name=u'图片地址')
     msg = models.CharField(max_length=300, verbose_name=u'简介') 
     star_time = models.DateTimeField(auto_now_add=True,verbose_name=u'创建日期')   
     last_time = models.DateTimeField(auto_now=True,verbose_name=u'最后一次修改日期')  
