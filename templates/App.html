@@ -2,12 +2,14 @@
 {% load staticfiles %}
 {% block main %}
 <div class="fh5co-narrow-content">
-        <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">常用软件</h2>
         <div class="row row-bottom-padded-md">
+            
+            <div class="col-md-12 col-padding animate-box " ><p class="fh5co-lead">常用</p> </div>
             {% for i in applist %}
+            {% if i.Appclass == 'do1' %}
             <div class="col-md-3 col-padding animate-box mianimate-box " data-animate-effect="fadeInLeft" >
                 <div class="blog-entry">
-                    <a href="{{ i.WANdomurl }}" target="_blank">
+                    <a href="{{ i.PANdomurl }}" target="_blank">
                         <div class="desc">
                             <h3 style="height:30px;    overflow: hidden; text-align: center;">
                                 {{ i.title }}
@@ -16,6 +18,40 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
+            <div class="col-md-12 col-padding animate-box " ><p class="fh5co-lead">娱乐</p> </div>
+
+            {% for i in applist %}
+            {% if i.Appclass == 'do2' %}
+            <div class="col-md-3 col-padding animate-box mianimate-box " data-animate-effect="fadeInLeft" >
+                <div class="blog-entry">
+                    <a href="{{ i.PANdomurl }}" target="_blank">
+                        <div class="desc">
+                            <h3 style="height:30px;    overflow: hidden; text-align: center;">
+                                {{ i.title }}
+                            </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="col-md-12 col-padding animate-box " ><p class="fh5co-lead">其它</p> </div>
+            {% for i in applist %}
+            {% if i.Appclass == 'do3' %}
+            <div class="col-md-3 col-padding animate-box mianimate-box " data-animate-effect="fadeInLeft" >
+                <div class="blog-entry">
+                    <a href="{{ i.PANdomurl }}" target="_blank">
+                        <div class="desc">
+                            <h3 style="height:30px;    overflow: hidden; text-align: center;">
+                                {{ i.title }}
+                            </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

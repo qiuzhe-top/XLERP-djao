@@ -4,11 +4,17 @@ from UserApp.models import User_Information
 # Create your models here.
 
 class APPLIST(models.Model): 
+    GENDER_CHOICES = (
+        (u'do1', u'常用'),
+        (u'do2', u'娱乐'),
+        (u'do3', u'其他'),
+    )
     title = models.CharField(max_length=10,unique=True,verbose_name=u'标题')
-    imgurl = models.ImageField(upload_to='static/images/app',verbose_name=u'图片地址')
-    msg = models.CharField(max_length=300, verbose_name=u'简介') 
-    PANdomurl = models.CharField(max_length=300, verbose_name=u'网盘地址') 
-    WANdomurl = models.CharField(max_length=300, verbose_name=u'其它地址') 
+    # imgurl = models.ImageField(upload_to='static/images/app',verbose_name=u'图片地址')
+    # msg = models.CharField(max_length=300, verbose_name=u'简介') 
+    PANdomurl = models.CharField(max_length=300, verbose_name=u'文件地址') 
+    Appclass = models.CharField(max_length=30, verbose_name=u'类别', choices=GENDER_CHOICES) 
+    imgurl = models.CharField(max_length=300, null=True, blank=True,verbose_name=u'图片地址') 
     star_time = models.DateTimeField(auto_now_add=True,verbose_name=u'创建日期')   
     last_time = models.DateTimeField(auto_now=True,verbose_name=u'最后一次修改日期')  
     isDelete = models.BooleanField(default=True,verbose_name=u'是否可用') 

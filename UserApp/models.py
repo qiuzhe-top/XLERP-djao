@@ -21,6 +21,15 @@ class User_Information(models.Model):
     class Meta:
         verbose_name_plural = "用户信息"
 
+class User_Sign(models.Model):
+    User_ID = models.ForeignKey('User_Information', on_delete=models.CASCADE,verbose_name=u'姓名')
+    star_time = models.DateTimeField(auto_now_add=True,verbose_name=u'创建日期')   
+    last_time = models.DateTimeField(auto_now=True,verbose_name=u'最后一次修改日期') 
+    def __str__(self): 
+        return self.User_ID
+    class Meta:
+        verbose_name_plural = "签到日志"
+    
 class UsPicture(models.Model):
     GENDER_CHOICES = (
         (u'Red', u'红色'),
