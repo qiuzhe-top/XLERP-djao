@@ -67,10 +67,3 @@ def warehouse(request):
     # print(context['warehouse'])
     context['activehome'] = 'fh5co-active'
     return render(request,'warehouse.html',context)
-#成员签名
-def User_picture(request):
-    context = {}
-    context['User_picture'] = UsPicture.objects.all()
-    # print(context['User_picture'])
-    context['activehome'] = 'fh5co-active'
-    return render(request,'User_picture.html',context)
