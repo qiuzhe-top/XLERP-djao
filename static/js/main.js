@@ -156,3 +156,28 @@
 
 
 }());
+
+ function ajaxqd(){
+	 $.ajax({
+
+		url:'/SigninAjax/',
+
+		type:'POST',
+
+		data:{data:'data'},
+
+		beforeSend:function(){//加载中
+
+		},
+
+		complete:function(){//加载完成
+
+		},
+
+		success:function(arg){//加载完成返回数据
+			alert(arg.msg)
+		}
+
+	})
+	
+ }

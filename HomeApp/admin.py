@@ -9,7 +9,7 @@ class APPLISTeleAdmin(admin.ModelAdmin):
     #筛选器
     list_filter =('isDelete','Appclass') #过滤器
     search_fields =('id', 'title') #搜索字段
-    list_editable = ['id', 'Appclass','PANdomurl']   #list_editable 设置默认可编辑字段
+    list_editable = ['Appclass','PANdomurl']   #list_editable 设置默认可编辑字段
     date_hierarchy = ('star_time')    # 详细时间分层筛选　
 
 @admin.register(dynamic)

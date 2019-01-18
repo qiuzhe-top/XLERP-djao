@@ -1277,3 +1277,16 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .myfh5co-heading{
   margin-bottom:10px;
 }
+
+.sign-in{
+  position: fixed;
+  width: 40px;
+  z-index: 2;
+  right: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.sign-in:hover{
+  transition: 0.5s;
+  width: 45px;
+}

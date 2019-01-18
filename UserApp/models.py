@@ -8,9 +8,9 @@ class User_Information(models.Model):
     username = models.CharField(max_length=128,unique=True)#账号
     password = models.CharField(max_length=256)#密码
     name = models.CharField(max_length=30, verbose_name=u'姓名') 
-    gender = models.CharField(max_length=30, verbose_name=u'性别', choices=GENDER_CHOICES) 
+    # gender = models.CharField(max_length=30, verbose_name=u'性别', choices=GENDER_CHOICES) 
     experience = models.IntegerField(null=True, blank=True,verbose_name=u'经验')
-    ClassID = models.ForeignKey('Unit_class', on_delete=models.CASCADE,verbose_name=u'班级')
+    ClassID = models.ForeignKey('Unit_class',null=True, blank=True,on_delete=models.CASCADE,verbose_name=u'班级')
     star_time = models.DateTimeField(auto_now_add=True,verbose_name=u'创建日期')   
     last_time = models.DateTimeField(auto_now=True,verbose_name=u'最后一次修改日期')  
     isDelete = models.BooleanField(default=True,verbose_name=u'是否可用') 
@@ -25,8 +25,8 @@ class User_Sign(models.Model):
     User_ID = models.ForeignKey('User_Information', on_delete=models.CASCADE,verbose_name=u'姓名')
     star_time = models.DateTimeField(auto_now_add=True,verbose_name=u'创建日期')   
     last_time = models.DateTimeField(auto_now=True,verbose_name=u'最后一次修改日期') 
-    def __str__(self): 
-        return self.User_ID
+    isDelete = models.BooleanField(default=True,verbose_name=u'是否可用') 
+
     class Meta:
         verbose_name_plural = "签到日志"
     

@@ -3,19 +3,116 @@ from . import models
 from django.http import HttpResponseRedirect,JsonResponse
 import json
 import os
+import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from UserApp.models import UsPicture
+from UserApp.models import UsPicture,User_Information,User_Sign
 
 # Create your views here.
 # 访问主页
 def home(request):
     context = {}
     context['activehome'] = 'fh5co-active'
-
-    
     return render(request,'home.html',context)
-# 文章首页
+def Landing(request):
+    context = {}
+    # context['motto_data'] = motto_text()
+    context['message'] = "请登陆您的账号"
+    if request.method=="POST":
+        password = request.POST.get('password')
+        username = request.POST.get('username')
+        try:
+            User_mi = User_Information.objects.get(username=username)
+            # user_data = User_Information.objects.get(userID = User_mi.pk)
+        except:
+            context['message'] = "用户信息不存在！"
+            return render(request,'login.html',context)
+        if User_mi.password == password:
+            request.session['user_name'] = User_mi.name
+            context['user_name'] = User_mi.name
+            request.session['user_ID'] = User_mi.pk
+            request.session['user_experience'] = User_mi.experience
+            request.session['is_login'] = True
+            return HttpResponseRedirect('/')
+        else:
+            context['message'] = "密码错误！"
+            context['user_name'] = username
 
+        return render(request,'login.html',context)
+    return render(request,'login.html',context)
+# 登出
+def Logout(request):
+    context = {}  
+    if not request.session.get('is_login', None):
+        return render(request,'login.html',context)  
+    request.session.flush()
+    context['user_name'] = '登录'
+    return HttpResponseRedirect('/')
+# 注册
+def adduser(request):
+    context = {}  
+    context['message'] = '注册'
+    context['username'] = '账号'
+    context['name'] = '姓名'
+    if request.method=="POST":
+        if request.POST.get('password') == request.POST.get('passwords'):
+            username = request.POST.get('username')
+            name = request.POST.get('name')
+            try:
+                User_Information.objects.get(username=username)
+                # user_data = User_Information.objects.get(userID = User_mi.pk)
+                context['message'] = '用户已经存在'
+                return render(request,'adduser.html',context) 
+            except:
+                User_Information.objects.create(name = name,password = request.POST.get('password'),username = username)
+                User_mi = User_Information.objects.get(username=username)
+                request.session['user_name'] = User_mi.name
+                context['user_name'] = User_mi.name
+                request.session['user_ID'] = User_mi.pk
+                request.session['user_experience'] = User_mi.experience
+                request.session['is_login'] = True
+                return HttpResponseRedirect('/')
+        else:
+            context['username'] = request.POST.get('username')
+            context['name'] = request.POST.get('name')
+            context['message'] = '两次密码不一致'
+            return render(request,'adduser.html',context)
+    return render(request,'adduser.html',context)
+# 签到
+def SigninAjax(request):
+    context = {}
+    if request.session.get('is_login', None):
+            try:
+                user = User_Information.objects.get(id=request.session['user_ID'])
+                # user_timer = User_Sign.objects.filter(User_ID=user).order_by('-id')#[0].last_time
+                now_day = datetime.datetime.now()
+                user_timer = User_Sign.objects.filter(User_ID=user,last_time__year=now_day.year,last_time__month=now_day.month,last_time__day=now_day.day)#.order_by('-id')#[0].last_time
+                if user_timer.count() == 0:
+                    # user_timer = user_timer[0].last_time.datetime.now()
+                    # now_day = datetime.datetime.now()
+                    # print(now_day,user_timer)
+                    # if now_day.day != user_timer.day and now_day.year != user_timer.year:
+                    user = User_Information.objects.get(id=request.session['user_ID'])
+                    User_Sign.objects.create(User_ID = user)
+                    context['msg'] =  "签到成功"
+                else:
+                    context['msg'] =  "已经签到"
+                # else:
+                    # user = User_Information.objects.get(id=request.session['user_ID'])
+                    # User_Sign.objects.create(User_ID = user)
+                    # context['msg'] =  "签到成功"
+            except:
+                context['msg'] =  "签到失败"
+    json.dumps(context)
+
+    # ip =comment.ip_address=request.META.get("REMOTE_ADDR",None)
+    # if request.META.has_key('HTTP_X_FORWARDED_FOR'):
+    #     ip =  request.META['HTTP_X_FORWARDED_FOR']
+    # else:
+    #     ip = request.META['REMOTE_ADDR']
+    # print(ip) 
+    return JsonResponse(context) 
+
+# 文章首页
 def postdata(request):
     context = {}
     if request.method == 'GET':
