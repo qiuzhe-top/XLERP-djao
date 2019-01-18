@@ -181,3 +181,13 @@
 	})
 	
  }
+
+ function checkForm(){
+	var form = document.getElementById('test_form');
+	return ture;
+}
+// function myFunctionAdduser(){
+// 	var form = document.getElementById('test_form');
+// 	alert(9)
+// 	return ture;
+// }
