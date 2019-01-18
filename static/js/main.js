@@ -181,3 +181,7 @@
 	})
 	
  }
+ function checkForm(){
+	var form = document.getElementById('test_form');
+	return ture;
+}

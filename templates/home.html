@@ -128,11 +128,11 @@
                         </a>
                     </li>
                     {% endif %}
-                    <li>
+                    <!-- <li>
                         <a href="/admin" target="_blank">
                            管理员
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -145,8 +145,10 @@
             {% else %}
             <a href="{% url 'login' %}"><img class="sign-in" src="{% static 'images/qdrq.gif' %}" alt="" srcset="" ></a>
             {% endif %}
-
+          
             <aside id="fh5co-hero" class="js-fullheight">
+                    
+                        
                 <div class="flexslider js-fullheight">
                     <ul class="slides">
                         <!-- <li style="background-image: url({% static 'images/img_bg_1.jpg' %});"> -->
@@ -191,6 +193,7 @@
                             </div>
                         </li>
                     </ul>
+                    
                 </div>
             </aside>
             <div class="fh5co-narrow-content">
@@ -322,8 +325,8 @@
     </div>
 
     <!-- jQuery -->
-    <!-- <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script> -->
-    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script> -->
 
     <!-- jQuery Easing -->
     <!-- <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script> -->
@@ -344,9 +347,9 @@
     <!-- MAIN JS -->
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     {% block myjs %}
-
+   
     {% endblock %}
-    
+ 
 </body>
 
 </html>
