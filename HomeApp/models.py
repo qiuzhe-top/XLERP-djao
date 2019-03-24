@@ -80,3 +80,5 @@ class PhotoWall(models.Model):
 
     class Meta:
         verbose_name_plural = "照片墙"
+
+# class books_money(models.Model):
